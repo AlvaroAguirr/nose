@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{% block title %}
+hola
+{% endblock %}
+
+{% block content %}
+{% include 'insearch.html' %}
+
+<div>
+
+    <p> pagina para el catagalo cuando se haya salido de sesion  </p>
+    <a href="{{url_for('login.login')}}" class="botton">Inicio de sesion </a>
+</div>
+{% endblock %}

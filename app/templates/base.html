@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<!--<style>
+    .fond
+{
+ background-image:url("{{ url_for('static', filename='images/fondo.jpg')}}" );
+ 
+}
+</style> -->
+<title>{% block title %}{% endblock %}</title>
+  
+</head>
+    <body>
+        <header>
+            <div class="fond">
+            {% block content %}
+            {% endblock %}
+        
+</div>
+</header>
+<footer class="footer">
+    <p> Copyright @the Software house</p>
+</footer>
+</body>
+</html>

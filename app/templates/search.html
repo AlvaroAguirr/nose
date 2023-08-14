@@ -1,0 +1,20 @@
+
+<nav class="grid">
+    <img src="{{ url_for('static', filename='resource/logo.png') }}" alt="logo" class="i item">
+    <a href="{{url_for('home.cerrar')}}" class="item ins"><p>Cerrar Sesion</p>
+</a>
+
+    <nav class="buscadores" >
+        <a href="{{ url_for('product.productos') }}" class="co"> Productos</a>
+        <a href="{{ url_for('usuario.user') }}"class="co">Personal</a>   
+        <a href="{{ url_for('cat.catp')}}" class="co">Categorias</a>   
+        <a href="{{ url_for('report.reports') }}" class="co">Reportes</a>   
+        <a href="{{ url_for('brand.brands')}}" class="co">Marcas</a>   
+        <a href="{{ url_for('supplier.suppliers')}}" class="co">Proveedores</a>   
+    </nav>
+    </nav>
+    
+    
+    
+
+</nav>

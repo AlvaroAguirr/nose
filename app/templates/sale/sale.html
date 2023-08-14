@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+{% block title %}
+ventas
+{% endblock %}
+
+{% block content %}
+{% include 'insearch.html'%}
+<nav class="titulo"> 
+  <h1>
+    <a href="{{ url_for('ventas.sale') }}" class="bpr bpr-ed"> Regresar</a>
+    ventas </h1></nav>
+
+<div class= "opciones-vender">   
+  <a href="{{ url_for('ventas.create_sal') }}" class="botton1">Nueva venta</a>
+ 
+</div>
+
+
+<nav class="a-table">
+  <table id="sale">
+    <thead>
+        <tr>
+            <th class="corner-up">ID</th>
+            <th>Fecha</th>
+            <th>Unidades Vendidas</th>
+            <th>Producto</th>
+            <th class="corner-up2">Usuario</th>
+            <th class="corner-up2">Total</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+      {% for sal in sale %}
+                <tr>
+                    <td>{{ sal.id_venta }}</td>
+                    <td>{{ sal.fecha }}</td>
+                    <td>{{ sal.unidades_vendidas }}</td>
+                    <td>{{ sal.id_producto }}</td>
+                    <td>{{ sal.id_usuario }}</td>
+                    <td>{{ sal.total }}</td>              
+                </tr>
+            {% endfor %}
+    </tbody>
+  </table>  
+</nav>
+    
+
+</header>
+
+{% endblock %}

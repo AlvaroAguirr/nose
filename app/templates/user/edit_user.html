@@ -1,0 +1,72 @@
+{%extends 'base.html'%}
+
+
+{% block title %}
+productos
+{% endblock %}
+
+{% block content %}
+{% include 'insearch.html'%}
+<nav class="titulo"> <h1>
+    <a href="{{ url_for('usuario.user') }}" class="bpr bpr-ed"> Regresar</a>
+    Editar los usuarios 
+</h1>
+</nav>
+
+
+            <form method="Post" class="pdiv">
+                {{ form.csrf_token }}
+                <div class="func func-pers">
+                    {{ form.nombre.label(class ="txtlab") }}
+                    {{ form.nombre(placeholder="Nombre",class="margin")}}
+                    {% if form.nombre.errors %}
+                        {% for error in form.nombre.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                
+                    {{ form.ape_paterno.label(class="txtlab") }}
+                    {{ form.ape_paterno(placeholder="apellidos",class="margin") }}
+                    {% if form.ape_paterno.errors %}
+                        {% for error in form.ape_paterno.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+               
+                    {{ form.ape_materno.label(class="txtlab")}}
+                    {{ form.ape_materno(placeholder="Ingrese el dato", class="margin") }}
+                    {% if form.ape_materno.errors %}
+                        {% for error in form.ape_materno.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                
+                    {{ form.nom_usuario.label(class="txtlab") }}
+                    {{ form.nom_usuario(placeholder="Nombre de usuario", class="margin") }}
+                    {% if form.nom_usuario.errors %}
+                        {% for error in form.nom_usuario.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+               
+                    {{ form.contrasenia.label(class="txtlab") }}
+                    {{ form.contrasenia(placeholder="", class="margin") }}
+                    {% if form.contrasenia.errors %}
+                        {% for error in form.contrasenia.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {{ form.rol.label(class="txtlab") }}
+                    {{ form.rol(placeholder="", class="margin") }}
+                    {% if form.rol.errors %}
+                        {% for error in form.rol.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                    {{ form.submit(class="bpr bpr-ac") }}
+        
+            </form>
+        </div>    
+{% endblock content %}

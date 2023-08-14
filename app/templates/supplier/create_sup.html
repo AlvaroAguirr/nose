@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar Proveedor
+{% endblock %}
+
+{% block content %}
+<nav class="titulo"> <h1>
+    <a href="{{ url_for('supplier.suppliers') }}" class="bpr bpr-ed"> Regresar</a>
+    añadir nuevos Proveedores
+</h1>
+
+</nav>
+    <form method="Post" class="pdiv">
+        {{ form.csrf_token }}
+        <div method="POST" class="func func">
+            {{ form.nombre.label }}
+            {{ form.nombre(placeholder="Nombre") }}
+
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        
+            {{ form.localidad.label }}
+            {{ form.localidad() }}
+
+            {% if form.localidad.errors %}
+                {% for error in form.localidad.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+       
+            {{ form.telefono.label }}
+            {{ form.telefono() }}
+
+            {% if form.telefono.errors %}
+                {% for error in form.telefono.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+       
+            {{ form.direccion.label }}
+            {{ form.direccion() }}
+
+            {% if form.direccion.errors %}
+                {% for error in form.direccion.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        
+        </div>
+            {{ form.submit(class="btn btn-success") }}
+        
+    </form>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+
+{% block title %}
+empleado
+{% endblock %}
+
+{% block content %}
+{% include 'search.html' %}
+<nav class="titulo"> <h1>
+    <a href="{{ url_for('login.adm_home') }}" class="bpr bpr-ed"> Regresar</a> 
+Personal</h1></nav>
+<a href="{{ url_for('usuario.create_use')}}">
+<input type="button" value="Añadir empleado" class="bpr bpr-ac">
+</a>
+<nav class="a-table">
+
+    <table id="user">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Nombre de usuario</th>
+             
+                <th>Rol</th>
+                
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for use in user %}
+                <tr>
+                    <td>{{ use.id_usuario }}</td>
+                    <td>{{ use.nombre }}</td>
+                    <td>{{ use.ape_paterno }}</td>
+                    <td>{{ use.ape_materno }}</td>
+                    <td>{{ use.nom_usuario }}</td>
+                    
+                    <td>{{ use.rol }}</td>
+
+                    <td class="acciones">
+                        <a href="{{ url_for('usuario.update_use', id_usuario=use.id_usuario) }}">
+                           
+                            <img src="{{ url_for('static', filename='resource/actualizar.png') }}" alt="actualizar" class="as">
+                        </a> 
+                        <form method="post" action="{{ url_for('usuario.delete_use', id_usuario=use.id_usuario) }}">
+                            <button type="submit" onclick="return confirm('seguro')" class="ad">
+                                
+                                <img src="{{ url_for('static', filename='resource/eliminar.png') }}" alt="borrar" class="ad">
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</header>
+</nav>
+
+{% endblock %}

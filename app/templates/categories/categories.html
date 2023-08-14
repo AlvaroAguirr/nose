@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block content %}
+{% include 'search.html'%}
+<nav class="titulo">
+    <h1>
+        <a href="{{ url_for('login.adm_home') }}" class="bpr bpr-ed"> Regresar</a>
+        Categorias</h1></nav>
+    <a href="{{ url_for('cat.catn') }}">
+        <input type="button" value="Añadir categorias" class="bpr bpr-ac">
+    </a>
+    <nav class="a-table">
+
+        <table id="sale">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+       
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cat in categories %}
+                <tr>
+                    <td>{{ cat.id_categoria }}</td>
+                    <td>{{ cat.nombre }}</td>
+                    <td class="acciones">
+                        <a href="{{ url_for('cat.cate', id_categoria=cat.id_categoria) }}">
+                            
+                            <img src="{{ url_for('static', filename='resource/actualizar.png') }}" alt="actualizar" class="as">
+                        </a> 
+                        <form method="Post" action="{{ url_for('cat.delete_cat', id_categoria=cat.id_categoria) }}">
+                            <input type="hidden" name="page" value="{{ page }}">
+                            <button type="submit" onclick="return confirm('¿seguro de borrar este objeto?')" class="ad">
+                                <img src="{{ url_for('static', filename='resource/eliminar.png') }}" alt="borrar" class="ad">
+                                
+                            </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% for i in range(pages) %}
+<a href="{{ url_for('cat.catp', page=(i + 1)) }}" class="pasar">{{ i + 1 }}</a>
+{% endfor %}
+</nav>
+{% endblock %}

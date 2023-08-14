@@ -1,0 +1,69 @@
+{%extends 'base.html'%}
+
+{% block title %}
+    Agregar usuario
+{% endblock %} 
+
+{% block content %}
+{% include 'insearch.html'%}
+<nav class="titulo"> <h1>
+    <a href="{{ url_for('product.productos') }}" class="bpr bpr-ed"> Regresar</a>
+    Insertar productos</h1>
+</nav>
+
+    <form method="Post" class="pdiv">
+        {{ form.csrf_token }}
+        <div class="func func-pro">
+            {{ form.nombre.label(class ="txtlab")}}
+            {{ form.nombre(placeholder="Nombre", class="margin") }}
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        
+            {{ form.precio.label (class ="txtlab") }}
+            {{ form.precio(placeholder="Precio", class="margin") }}
+            {% if form.precio.errors %}
+                {% for error in form.precio.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+       
+            {{ form.descripcion.label (class ="txtlab") }}
+            {{ form.descripcion(placeholder="Descripcion", class="margin") }}
+            {% if form.descripcion.errors %}
+                {% for error in form.descripcion.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {{ form.Unidades.label (class ="txtlab") }}
+            {{ form.Unidades(placeholder="unidades", class="margin") }}
+            {% if form.Unidades.errors %}
+                {% for error in form.Unidades.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            
+            {{ form.id_marca.label(class ="txtlab") }}
+            {{ form.id_marca(placeholder="Marca", class="margin") }}
+            {% if form.id_marca.errors %}
+                {% for error in form.id_marca.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+       
+            {{ form.id_categoria.label(class ="txtlab") }}
+            {{ form.id_categoria(placeholder="Categoria", class="margin") }}
+
+            {% if form.id_categoria.errors %}
+                {% for error in form.id_categoria.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+     
+            {{ form.submit(class="bpr bpr-ac") }}
+    </form>
+{% endblock content %}

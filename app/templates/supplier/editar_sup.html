@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar Proveedor
+{% endblock %}
+
+{% block content %}
+
+
+    <form method="post">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(placeholder="Nombre") }}
+
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.localidad.label }}
+            {{ form.localidad() }}
+
+            {% if form.localidad.errors %}
+                {% for error in form.localidad.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.telefono.label }}
+            {{ form.telefono() }}
+
+            {% if form.telefono.errors %}
+                {% for error in form.telefono.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.direccion.label }}
+            {{ form.direccion() }}
+
+            {% if form.direccion.errors %}
+                {% for error in form.direccion.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+    <a href="{{ url_for('proveedor.supplier') }}" class="btn btn-warning"> Regresar</a>
+{% endblock content %}

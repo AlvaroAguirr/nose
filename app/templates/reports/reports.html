@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+
+{% block title %}
+productos
+{% endblock %}
+
+{% block content %}
+{% include 'search.html'%}
+
+<nav class="titulo">
+    <h1>
+        <a href="{{ url_for('login.adm_home') }}" class="bpr bpr-ed"> Regresar</a> 
+        Reportes de ventas </h1></nav>
+<nav class="a-table">
+    
+    <table id="reports">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Producto</th>
+                <th>Usuario</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for rep in reports %}
+                <tr>
+                    <td>{{ rep.id_venta }}</td>
+                    <td>{{ rep.fecha }}</td>
+                    <td>{{ rep.total }}</td>
+                    <td>{{ rep.id_producto }}</td>
+                    <td>{{ rep.id_usuario }}</td>               
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+  
+</header>
+</nav>  
+
+{% endblock %}

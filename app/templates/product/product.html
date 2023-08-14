@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    products
+{% endblock %}
+
+{% block content %}
+
+{% include 'search.html'%}
+
+    <nav class="titulo">
+        <h1>
+            <a href="{{ url_for('login.adm_home') }}" class="bpr bpr-ed"> Regresar</a>
+            Lista productos</h1></nav>
+   
+    <a href="{{ url_for('product.c_produ') }}">
+        <input type="button" value="Nuevo producto" class="bpr bpr-ac"></a>
+   
+    <nav class="a-table">
+        <table id="sale">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>precio</th>
+                <th>descripcion</th>
+                <th>unidades</th>
+                <th>marca</th>
+                <th>categoria</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pro in product %}
+            <tr>
+                <td>{{ pro.id_producto }}</td>
+                <td>{{ pro.nombre }}</td>
+                <td>{{ pro.precio }}</td>
+                <td>{{ pro.descripcion }}</td>
+                <td>{{ pro.Unidades }}</td>
+                <td>{{ pro.id_marca }}</td>
+                <td>{{ pro.id_categoria }}</td>
+                
+                    <td class="acciones">
+                        
+                            <a href="{{ url_for('product.updateprod', id_producto=pro.id_producto) }} ">
+                                
+                                <img src="{{ url_for('static', filename='resource/actualizar.png') }}" alt="actualizar" class="as">
+                            </a> 
+                            <form method="Post" action="{{url_for('product.delprod', id_producto=pro.id_producto) }}" >
+                                <input type="hidden" name="page" value="{{ page }}">
+                                <button type="submit" onclick="return confirm('seguro')" class="ad">
+                                
+                                    <img src="{{ url_for('static', filename='resource/eliminar.png') }}" alt="borrar" class="ad">
+                                </button>
+                    </form>
+                </td>
+            </tr>
+
+        
+            {% endfor %}
+        </tbody>
+    </table>
+    {% for i in range(pages) %}
+<a href="{{ url_for('product.productos', page=(i + 1)) }}" class="pasar">{{ i + 1 }}</a>
+{% endfor %}
+</nav>
+{% endblock %}

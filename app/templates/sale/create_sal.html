@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar usuario
+{% endblock %}
+
+{% block content %}
+{% include 'insearch.html' %}
+<nav class="titulo"> <h1>
+    <a href="{{ url_for('login.adm_home') }}" class="bpr bpr-ed"> Regresar</a>
+    Añadir a venta</h1></nav>
+
+
+    <form method="post" class="pdiv">
+
+        {{ form.csrf_token }}
+         <div class="func func-sale">
+                {{ form.fecha.label(class="txtlab") }}
+                {{ form.fecha(placeholder="Fecha", class="margin") }}
+                {% if form.fecha.errors %}
+                {% for error in form.fecha.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+
+                {{ form.unidades_vendidas.label(class="txtlab") }}
+                {{ form.unidades_vendidas( class="margin") }}
+                {% if form.unidades_vendidas.errors %}
+                {% for error in form.unidades_vendidas.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+
+                {{ form.id_producto.label(class="txtlab") }}
+                {{ form.id_producto(class="margin") }}
+                {% if form.id_producto.errors %}
+                {% for error in form.id_producto.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+
+        
+                {{ form.id_usuario.label(class="txtlab") }}
+                {{ form.id_usuario(class="margin") }}
+                {% if form.id_usuario.errors %}
+                {% for error in form.id_usuario.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+
+                {{ form.total.label(class="txtlab") }}
+                {{ form.total(class="margin") }}
+                {% if form.total.errors %}
+                {% for error in form.total.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endif %}
+        </div>
+
+            {{ form.submit(class="bpr bpr-ac") }}
+        
+    </form>
+  
+{% endblock content %}

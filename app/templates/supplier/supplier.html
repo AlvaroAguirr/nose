@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Proveedores
+{% endblock %}
+
+{% block content %}
+{% include 'search.html'%}
+<nav class="titulo">    
+    <h1>
+<a href="{{ url_for('login.adm_home') }}" class="bpr bpr-ed"> Regresar</a>
+        Pagina de Proveedores </h1></nav>    
+    
+
+
+    <a href="{{ url_for('supplier.create_sup')}}">
+        <input type="button" value="Agregar proveedor" class="bpr bpr-ac">
+    </a>
+    <nav class="a-table">
+        <table id="sale">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Localidad</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sup in supplier %}
+                <tr>
+                    <td>{{ sup.id_proveedor }}</td>
+                    <td>{{ sup.nombre }}</td>
+                    <td>{{ sup.localidad }}</td>
+                    <td>{{ sup.telefono }}</td>
+                    <td>{{ sup.direccion }}</td>
+                    <td class="acciones">
+                        <a href="{{ url_for('supplier.editar_sup', id_proveedor=sup.id_proveedor) }}">
+                          
+                            <img src="{{ url_for('static', filename='resource/actualizar.png') }}" alt="actualizar" class="as">
+                        </a> 
+                        <form method="post" action="{{ url_for('supplier.delete_sup', id_proveedor=sup.id_proveedor) }}">
+                            <button type="submit"
+                            onclick="return confirm('seguro')" class="ad">
+                            <img src="{{ url_for('static', filename='resource/eliminar.png') }}" alt="borrar" class="ad">
+                            
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </nav>
+{% endblock %}

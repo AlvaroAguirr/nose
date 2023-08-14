@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+
+{% block title %}
+productos
+{% endblock %}
+
+{% block content %}
+{% include 'insearch.html' %}
+<nav class="titulo"><h1>
+    <a href="{{ url_for('cat.catp') }}" class="bpr bpr-ed"> Regresar</a>
+    Editar categorias 
+</h1>
+</nav>
+
+
+        <form method="Post" class="pdiv">
+            {{ form.csrf_token }}
+            <div class="func func-cat">
+                {{ form.nombre.label( class="txtlab") }}
+                {{ form.nombre(placeholder="Nombre", class="margin") }}
+                {% if form.nombre.errors %}
+                    {% for error in form.nombre.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %} 
+                {% endif %}
+            </div>
+    
+            <div>
+                {{ form.submit(class="bpr bpr-ac") }}
+            </div>
+        </form>
+{% endblock content %}

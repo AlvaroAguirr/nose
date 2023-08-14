@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+
+{% block title %}
+categorias
+{% endblock %}
+
+{% block content %}
+{% include 'insearch.html' %}
+
+
+<div>
+    <nav class="titulo"><h1>
+        Menú de adminsitrador</h1>
+    </nav>
+    <nav id="container">
+        <a href="{{ url_for('product.productos') }}" class="options op-">
+            <p class="text a ">Productos</p>
+            <img src="{{ url_for('static', filename='resource/prod.jpg') }}" alt="imagen"  class="img-men">
+            </a>
+
+            <a href="{{ url_for('usuario.user') }}" class="options">
+                <p class="text b">Personal</p>
+                <img src="{{ url_for('static', filename='resource/Usuarios.jpg') }}" alt="imagen" class="img-men" >
+            </a>
+        
+            <a href="{{ url_for('cat.catp')}}" class="options">
+                <p class="text c">Categoria</p>
+                <img src="{{ url_for('static', filename='resource/cateogrias.jpg') }}" alt="imagen" class="img-men" >
+            </a>
+        
+            <a href="{{ url_for('report.reports') }}" class="options">
+                <p class="text d">Venta y Reportes</p>
+                <img src="{{ url_for('static', filename='resource/reportes.jpg') }}" alt="imagen" class="img-men" >
+            </a>
+        </nav>
+        
+            <nav id="container1">
+                
+                <a href="{{ url_for('brand.brands')}}" class="options">
+                    <p class=" text e">Marcas</p>
+                    <img src="{{ url_for('static', filename='resource/marca.jpg') }}" alt="imagen" class="img-men" >
+                </a>
+                <a href="{{ url_for('supplier.suppliers')}}" class="options">
+                    <p class="text f">Proveedores</p>
+                    <img src="{{ url_for('static', filename='resource/proveedor.jpg') }}" alt="imagen" class="img-men" >
+                </a>
+            </nav>
+</div>
+
+</header>
+{% endblock %}
+

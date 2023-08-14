@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Agregar Marca
+{% endblock %}
+
+{% block content %}
+<nav class="titulo"><h1>
+    <a href="{{ url_for('brand.brands') }}" class="bpr bpr-ed"> Regresar</a>
+añadir nuevas marcas
+</h1></nav>
+
+    <form method="Post" class="pdiv">
+        {{ form.csrf_token }}
+        <div class="func func">
+            {{ form.nombre.label }}
+            {{ form.nombre(placeholder="Nombre") }}
+            {% if form.nombre.errors %}
+                {% for error in form.nombre.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div>
+            {{ form.submit(class="bpr bpr-ac") }}
+        </div>
+    </form>
+{% endblock content %}
